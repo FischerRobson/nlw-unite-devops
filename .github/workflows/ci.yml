@@ -32,3 +32,5 @@ jobs:
     - name: Push Image
       run: |
         docker push fischernz/passin:${{ steps.generate_sha.outputs.sha }}
+        docker tag fischernz/passin:${{ steps.generate_sha.outputs.sha }} fischernz/passin:latest
+        docker push fischernz/passin:latest
