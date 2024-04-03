@@ -22,3 +22,13 @@ jobs:
 
     - name: Docker Build Image
       run: docker build -t fischernz/passin:${{ steps.generate_sha.outputs.sha }} .
+
+    - name: Log into DockerHub
+      uses: docker/login-action@v3
+      with: 
+        username: ${{ secrets.DOCKERHUB_USER }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    
+    - name: Push Image
+      run: |
+        docker push fischernz/passin:${{ steps.generate_sha.outputs.sha }}
