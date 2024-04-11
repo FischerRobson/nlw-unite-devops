@@ -1,0 +1,20 @@
+apiVersion: argocd.argoproj.io/v1alpha1
+
+kind: Application
+
+metadata:
+  name: nlw-passin
+  namespace: argo
+
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:FischerRobson/nlw-unite-devops.git
+    targetRevision: HEAD
+    path: deploy
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: nlw
+  syncPolice:
+    automated:
+      prune: true

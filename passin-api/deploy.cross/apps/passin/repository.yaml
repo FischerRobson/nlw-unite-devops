@@ -1,0 +1,14 @@
+apiVersion: apps/v1
+
+kind: Secret
+
+metadata:
+  name: public-repo
+  namespace: argo
+  labels:
+    argocd.argoproj.io/secret-type: repository
+
+stringData:
+  type: git
+  url: git@github.com:FischerRobson/nlw-unite-devops.git
+  
