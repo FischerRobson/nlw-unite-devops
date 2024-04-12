@@ -21,7 +21,7 @@ jobs:
         echo "sha=${SHA}" >> $GITHUB_OUTPUT
 
     - name: Docker Build Image
-      run: docker build -t fischernz/passin:${{ steps.generate_sha.outputs.sha }} -f passin-api/api/Dockerfile .
+      run: docker build -t fischernz/passin:${{ steps.generate_sha.outputs.sha }} -f passin-api/api/Dockerfile
 
     - name: Log into DockerHub
       uses: docker/login-action@v3
