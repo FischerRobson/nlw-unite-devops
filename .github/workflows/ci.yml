@@ -34,3 +34,13 @@ jobs:
         docker push fischernz/passin:${{ steps.generate_sha.outputs.sha }}
         docker tag fischernz/passin:${{ steps.generate_sha.outputs.sha }} fischernz/passin:latest
         docker push fischernz/passin:latest
+
+    - name: Update image tag
+      uses: fjogeleit/yaml-update-action@main
+      with:
+        branch: main
+        valueFile: 'passin-api/deploy/values.yaml'
+        propertyPath: 'image.tag'
+        value: ${{ steps.generate_sha.outputs.sha }}
+        commitChange: true
+        message: "new: Updated tag value in helm"
