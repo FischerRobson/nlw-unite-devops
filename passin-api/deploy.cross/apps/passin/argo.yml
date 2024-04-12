@@ -1,5 +1,4 @@
-apiVersion: argocd.argoproj.io/v1alpha1
-
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
@@ -15,6 +14,6 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: nlw
-  syncPolice:
+  syncPolicy:
     automated:
-      prune: true
+      prune: true   

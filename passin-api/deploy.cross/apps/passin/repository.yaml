@@ -1,9 +1,8 @@
-apiVersion: apps/v1
-
+apiVersion: v1
 kind: Secret
 
 metadata:
-  name: public-repo
+  name: private-repo
   namespace: argo
   labels:
     argocd.argoproj.io/secret-type: repository
@@ -11,4 +10,6 @@ metadata:
 stringData:
   type: git
   url: git@github.com:FischerRobson/nlw-unite-devops.git
-  
+  sshPrivateKey: |
+    -----BEGIN OPENSSH PRIVATE KEY-----
+    -----END OPENSSH PRIVATE KEY-----
